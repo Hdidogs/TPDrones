@@ -5,6 +5,8 @@ import drones.gr2.util.drone.Position;
 import java.util.ArrayList;
 
 public interface AllMissions {
+    void add(Mission missions);
 
+    void remove(String names);
 
 }

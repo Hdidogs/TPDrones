@@ -82,7 +82,7 @@ public class MissionTest {
         paths.add(position2);
         Drone drone = new Drone("Drone",20,10.5,position3);
         Path path = new Path(paths);
-        Mission mission = new Mission("Mission 1 ",path,drone);
+        Mission mission = new Mission("Mission 1 ",path);
         var result = mission.next();
 
         assertEquals(true,result);
@@ -94,7 +94,7 @@ public class MissionTest {
         Position position3 = new Position(6,3,3);
         Drone drone = new Drone("Drone",20,10.5,position3);
         Path path = new Path(paths);
-        Mission mission = new Mission("Mission 1 ",path,drone);
+        Mission mission = new Mission("Mission 1 ",path);
         var result = mission.next();
 
         assertEquals(false,result);

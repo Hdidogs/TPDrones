@@ -12,16 +12,15 @@ import drones.gr2.util.mission.MissionStatut;
 
 
 public class Mission {
+
     private String name;
     private Path path;
     private Drone drone;
     private MissionStatut statut;
 
-    public Mission(String name, Path path, Drone drone) {
+    public Mission(String name, Path path) {
         this.name = name;
         this.path = path;
-        this.drone = drone;
-        statut = new MissionNotStart();
     }
 
     public ActionResult next() {
@@ -31,6 +30,7 @@ public class Mission {
             return new KO();
         }
 
+
         path.getPotitions().removeFirst();
         return new OK();
     }
@@ -39,4 +39,9 @@ public class Mission {
     public String toString() {
         return "Mission " + name + " statut : " + statut;
     }
+
+    public String getName() {
+        return name;
+    }
+
 }

@@ -1,5 +1,9 @@
 package drones.gr2.drone;
 
+import drones.gr2.util.ActionResult;
+import drones.gr2.util.Found;
+import drones.gr2.util.NotFound;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -13,7 +17,7 @@ public class InMemoryAllDrones implements AllDrones {
                 index=i;
             }
         }
-        this.drones.add(drones.get(index));
+        this.drones.remove(drones.get(index));
     }
 
     @Override
@@ -22,25 +26,23 @@ public class InMemoryAllDrones implements AllDrones {
     }
 
     @Override
-    public void all() {
-        for (int i = 0; i < drones.size(); i++) {
-            System.out.println("name :"+ drones.get(i).getNom()+
-                    " Vitesse :"+drones.get(i).getVitesse()+
-                    "Position :"+ drones.get(i).getPosition().getX()+", "+
-                    drones.get(i).getPosition().getY()+", "+
-                    drones.get(i).getPosition().getZ());
-        }
+    public ArrayList<Drone> all() {
+        return drones;
     }
 
     @Override
-    public void findBy(String name) {
+    public ActionResult findBy(String name) {
         int index = -1;
         for (int i = 0; i < drones.size(); i++) {
             if(drones.get(i).getNom()==name){
                 index=i;
             }
         }
-
+        if(index == -1){
+            return new NotFound();
+        }else {
+            return new Found();
+        }
     }
 
 }
