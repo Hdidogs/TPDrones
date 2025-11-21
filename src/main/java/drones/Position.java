@@ -38,8 +38,8 @@ public class Position {
     }
 
     public Double distanceTo(Position destination){
-        return sqrt((getX()-destination.getX())^2+
-                (getY()-destination.getY())^2+
-                (getZ()-destination.getZ())^2);
+        return sqrt((destination.getX()-getX())^2+
+                (destination.getY()-getY())^2+
+                (destination.getZ()-getZ())^2);
     }
 }
