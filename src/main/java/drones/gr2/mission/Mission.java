@@ -18,9 +18,10 @@ public class Mission {
     private Drone drone;
     private MissionStatut statut;
 
-    public Mission(String name, Path path) {
+    public Mission(String name, Path path, Drone drone) {
         this.name = name;
         this.path = path;
+        this.drone = drone;
     }
 
     public String getName() {
@@ -51,9 +52,4 @@ public class Mission {
     public String toString() {
         return "Mission " + name + " statut : " + statut;
     }
-
-    public String getName() {
-        return name;
-    }
-
 }
