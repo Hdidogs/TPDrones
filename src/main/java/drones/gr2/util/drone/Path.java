@@ -21,4 +21,13 @@ public class Path {
 
         return potitions.getFirst();
     }
+
+    public Double distance(){
+        double distance = 0.0;
+        for(int i = 0; i< potitions.size() - 1 ; i++){
+            distance += potitions.get(i).distanceTo(potitions.get(i+1));
+        }
+
+        return distance;
+    }
 }

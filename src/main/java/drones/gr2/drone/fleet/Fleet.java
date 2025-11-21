@@ -6,6 +6,8 @@ import drones.gr2.util.ActionResult;
 import drones.gr2.util.KO;
 import drones.gr2.util.OK;
 import drones.gr2.util.drone.Path;
+import drones.gr2.util.drone.Rejected;
+import drones.gr2.util.mission.MissionInProgress;
 
 import java.util.ArrayList;
 
@@ -40,5 +42,24 @@ public class Fleet {
         allMissions.add(new Mission(missionName, path, bestDrone));
 
         return new OK();
+    }
+
+    public ActionResult move(String missionName) {
+        Mission chooseMission = (Mission) allMissions.stream().filter(mission -> mission.getName().equals(missionName));
+
+        if (chooseMission == null) return new KO();
+
+        switch (chooseMission.next()) {
+            case KO ko -> {
+                return ko;
+            }
+            case OK ok -> {
+                chooseMission.setStatut(new MissionInProgress());
+                return ok;
+            }
+            default -> {
+                return new KO();
+            }
+        }
     }
 }
