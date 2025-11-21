@@ -1,5 +1,7 @@
 package drones;
 
+import static java.lang.Math.sqrt;
+
 public class Position {
     private int x;
     private int y;
@@ -33,5 +35,11 @@ public class Position {
 
     public void setZ(int z) {
         this.z = z;
+    }
+
+    public Double distanceTo(Position destination){
+        return sqrt((getX()-destination.getX())^2+
+                (getY()-destination.getY())^2+
+                (getZ()-destination.getZ())^2);
     }
 }
