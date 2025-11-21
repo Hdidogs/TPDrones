@@ -10,6 +10,14 @@ public class Path {
         this.potitions = potitions;
     }
 
+    public ArrayList<Position> getPotitions() {
+        return potitions;
+    }
+
+    public void setPotitions(ArrayList<Position> potitions) {
+        this.potitions = potitions;
+    }
+
     private ArrayList<Position> potitions = new ArrayList<>();
 
     public Position nextPosition(){
