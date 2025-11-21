@@ -15,6 +15,8 @@ public class Fleet {
     ArrayList<Drone> allDrones;
     ArrayList<Mission> allMissions;
 
+
+
     public void add(Drone drone) {
         allDrones.add(drone);
     }
@@ -62,4 +64,16 @@ public class Fleet {
             }
         }
     }
+
+    public void reportMission(){
+        for (int i = 0; i < allMissions.size(); i++) {
+            System.out.println(allMissions.get(i).toString());
+        }
+    };
+
+    public void reportDrones(){
+        for (int i = 0; i < allDrones.size(); i++) {
+            System.out.println(allDrones.get(i).toString());
+        }
+    };
 }
