@@ -1,4 +1,4 @@
-package drones;
+package drones.gr2.mission;
 
 public enum MissionResult {
     OK(true),

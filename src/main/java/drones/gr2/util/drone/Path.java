@@ -1,8 +1,7 @@
-package drones;
+package drones.gr2.util.drone;
 
-import drones.exception.PathException;
+import drones.gr2.exception.PathException;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public class Path {
