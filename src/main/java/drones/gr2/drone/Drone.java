@@ -57,7 +57,8 @@ public class Drone {
             Rejected rejected = new Rejected();
             return rejected;
         }
-        Moving moving = new Moving();
+         int distanse = positionfinal.distanceTo(getPosition());
+        Moving moving = new Moving(positionfinal,distanse/getVitesse());
         return moving;
     }
 
