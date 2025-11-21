@@ -1,4 +1,4 @@
-package drones;
+package drones.gr2.util;
 
 public class Position {
     private int x;
