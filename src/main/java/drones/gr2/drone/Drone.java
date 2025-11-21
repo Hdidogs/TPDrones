@@ -1,6 +1,10 @@
 package drones.gr2.drone;
 
+import drones.gr2.exception.DroneException;
+import drones.gr2.util.drone.MoveResult;
+import drones.gr2.util.drone.Moving;
 import drones.gr2.util.drone.Position;
+import drones.gr2.util.drone.Rejected;
 
 public class Drone {
     private String nom;
@@ -13,6 +17,7 @@ public class Drone {
         this.altitudeMax = altitudeMax;
         this.vitesse = vitesse;
         this.position = position;
+        if(position.distanceTo(position)>altitudeMax)throw new DroneException("Le drone pas être créé avec une position qu'il ne peut atteindre");
     }
 
     public String getNom() {
@@ -45,6 +50,15 @@ public class Drone {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    public MoveResult goTo(Position positionfinal){
+        if(this.position.distanceTo(positionfinal)>this.altitudeMax){
+            Rejected rejected = new Rejected();
+            return rejected;
+        }
+        Moving moving = new Moving();
+        return moving;
     }
 
 
