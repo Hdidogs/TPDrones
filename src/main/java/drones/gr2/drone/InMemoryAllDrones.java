@@ -13,7 +13,7 @@ public class InMemoryAllDrones implements AllDrones {
                 index=i;
             }
         }
-        this.drones.add(drones.get(index));
+        this.drones.remove(drones.get(index));
     }
 
     @Override

@@ -11,10 +11,9 @@ public class Mission {
     private String name;
     private Path path;
 
-    public Mission(String name, Path path, Drone drone) {
+    public Mission(String name, Path path) {
         this.name = name;
         this.path = path;
-        this.drone = drone;
     }
 
     private Drone drone;
@@ -25,6 +24,7 @@ public class Mission {
         return  MissionResult.OK.isValue();
     }
 
-
-
+    public String getName() {
+        return name;
+    }
 }
