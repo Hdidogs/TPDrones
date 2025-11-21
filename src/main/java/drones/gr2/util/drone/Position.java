@@ -1,4 +1,4 @@
-package drones.gr2.util;
+package drones.gr2.util.drone;
 
 import static java.lang.Math.sqrt;
 

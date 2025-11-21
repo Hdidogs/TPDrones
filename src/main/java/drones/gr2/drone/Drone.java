@@ -1,6 +1,6 @@
-package drones;
+package drones.gr2.drone;
 
-import static java.lang.Math.sqrt;
+import drones.gr2.util.drone.Position;
 
 public class Drone {
     private String nom;
