@@ -27,7 +27,7 @@ public class Drone {
         this.altitudeMax = altitudeMax;
         this.vitesse = vitesse;
         this.position = position;
-        if(position.distanceTo(position)>altitudeMax)throw new DroneException("Le drone pas être créé avec une position qu'il ne peut atteindre");
+        if(position.getZ()>altitudeMax)throw new DroneException("Le drone pas être créé avec une position qu'il ne peut atteindre");
         this.isMoving = false;
     }
 
@@ -65,11 +65,9 @@ public class Drone {
 
     public MoveResult goTo(Position positionfinal){
         if(this.position.distanceTo(positionfinal)>this.altitudeMax){
-            Rejected rejected = new Rejected();
-            return rejected;
+            return new Rejected();
         }
-        Moving moving = new Moving();
-        return moving;
+        return new Moving();
     }
 
 
