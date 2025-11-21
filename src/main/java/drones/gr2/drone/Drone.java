@@ -75,7 +75,7 @@ public class Drone {
     }
 
     public MoveResult goTo(Position positionfinal){
-        if(this.position.distanceTo(positionfinal)>this.altitudeMax){
+        if(this.position.distanceTo(positionfinal)>this.altitudeMax || isMoving){
             return new Rejected();
         }
         return new Moving();
