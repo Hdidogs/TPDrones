@@ -14,6 +14,10 @@ public class inMemoryAllMissions implements AllMissions {
         allMission.add(missions);
     }
 
+    public ArrayList<Mission> all() {
+        return allMission;
+    }
+
     @Override
     public void remove(String name) {
         int index = -1;
