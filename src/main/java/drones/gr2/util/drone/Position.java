@@ -1,5 +1,6 @@
 package drones.gr2.util.drone;
 
+import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 public class Position {
@@ -38,8 +39,8 @@ public class Position {
     }
 
     public Double distanceTo(Position destination){
-        return sqrt((getX()-destination.getX())^2+
-                (getY()-destination.getY())^2+
-                (getZ()-destination.getZ())^2);
+        return sqrt((destination.getX()-getX())*(destination.getX()-getX())+
+                (destination.getY()-getY())*(destination.getY()-getY())+
+                (destination.getZ()-getZ())*(destination.getZ()-getZ()));
     }
 }
