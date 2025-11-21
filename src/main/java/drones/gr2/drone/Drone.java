@@ -12,6 +12,16 @@ public class Drone {
     private Double vitesse;
     private Position position;
 
+    public int getAutonomie() {
+        return autonomie;
+    }
+
+    public void setAutonomie(int autonomie) {
+        this.autonomie = autonomie;
+    }
+
+    private int autonomie;
+
     public Boolean getMoving() {
         return isMoving;
     }
@@ -22,13 +32,14 @@ public class Drone {
 
     private Boolean isMoving;
 
-    public Drone(String nom, int altitudeMax, Double vitesse, Position position) {
+    public Drone(String nom, int altitudeMax, Double vitesse, Position position, int autonomie) {
         this.nom = nom;
         this.altitudeMax = altitudeMax;
         this.vitesse = vitesse;
         this.position = position;
         if(position.getZ()>altitudeMax)throw new DroneException("Le drone pas être créé avec une position qu'il ne peut atteindre");
         this.isMoving = false;
+        this.autonomie = autonomie;
     }
 
     public String getNom() {
@@ -64,7 +75,7 @@ public class Drone {
     }
 
     public MoveResult goTo(Position positionfinal){
-        if(this.position.distanceTo(positionfinal)>this.altitudeMax){
+        if(this.position.distanceTo(positionfinal)>this.altitudeMax || isMoving){
             return new Rejected();
         }
         return new Moving();
