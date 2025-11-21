@@ -1,4 +1,4 @@
-package drones.exception;
+package drones.gr2.exception;
 
 public class PathException extends RuntimeException {
 
