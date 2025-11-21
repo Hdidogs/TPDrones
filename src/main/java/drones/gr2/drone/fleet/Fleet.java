@@ -23,12 +23,22 @@ public class Fleet {
         return new OK();
     }
 
-    public ActionResult plan(Path path) {
+    public ActionResult plan(Path path, String missionName) {
         if (allDrones.size() <= allMissions.size()) return new KO();
 
         double bestDistance = allDrones.getFirst().getPosition().distanceTo(path.nextPosition());
+        Drone bestDrone = allDrones.getFirst();
+
         for (Drone drone : allDrones) {
-            if ()
+            double droneDistance = drone.getPosition().distanceTo(path.nextPosition());
+            if (droneDistance < bestDistance) {
+                bestDistance = droneDistance;
+                bestDrone = drone;
+            }
         }
+
+        allMissions.add(new Mission(missionName, path, bestDrone));
+
+        return new OK();
     }
 }

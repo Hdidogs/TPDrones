@@ -1,6 +1,6 @@
 package drones.gr2.util.drone;
 
-abstract class MoveResult {
+public abstract class MoveResult {
 
 
 }

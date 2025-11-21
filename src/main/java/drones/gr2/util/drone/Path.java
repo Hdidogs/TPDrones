@@ -9,6 +9,7 @@ public class Path {
 
     public Path(ArrayList<Position> potitions) {
         this.potitions = potitions;
+        if(potitions.size()< 2 )throw new PathException("Votre parcour ne peut pas être inferieur à 2 étapes");
     }
 
     public ArrayList<Position> getPotitions() {
