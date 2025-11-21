@@ -1,11 +1,9 @@
 package drones.gr2.mission;
 
-import drones.gr2.util.drone.Position;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class inMemoryAllMissions implements AllMissions {
+public class InMemoryAllMissions implements AllMissions {
 
     private ArrayList<Mission> allMission = new ArrayList<>();
 

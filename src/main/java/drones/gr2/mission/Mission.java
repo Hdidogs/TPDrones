@@ -38,7 +38,7 @@ public class Mission {
 
     public ActionResult next() {
         try {
-            drone.goTo(path.nextPosition());
+            drone.goTo(path.nextPosition(), this);
         } catch (PathException e) {
             return new KO();
         }

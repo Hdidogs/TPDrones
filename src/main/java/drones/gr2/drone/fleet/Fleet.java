@@ -1,6 +1,8 @@
 package drones.gr2.drone.fleet;
 
 import drones.gr2.drone.Drone;
+import drones.gr2.drone.InMemoryAllDrones;
+import drones.gr2.mission.InMemoryAllMissions;
 import drones.gr2.mission.Mission;
 import drones.gr2.util.ActionResult;
 import drones.gr2.util.KO;
@@ -12,28 +14,26 @@ import drones.gr2.util.mission.MissionInProgress;
 import java.util.ArrayList;
 
 public class Fleet {
-    ArrayList<Drone> allDrones;
-    ArrayList<Mission> allMissions;
-
-
+    InMemoryAllDrones allDrones;
+    InMemoryAllMissions allMissions;
 
     public void add(Drone drone) {
         allDrones.add(drone);
     }
 
     public ActionResult remove(Drone drone) {
-        if (!allDrones.contains(drone)) return new KO();
-        allDrones.remove(drone);
+        if (!allDrones.all().contains(drone)) return new KO();
+        allDrones.all().remove(drone);
         return new OK();
     }
 
     public ActionResult plan(Path path, String missionName) {
-        if (allDrones.size() <= allMissions.size()) return new KO();
+        if (allDrones.all().size() <= allMissions.all().size()) return new KO();
 
-        double bestDistance = allDrones.getFirst().getPosition().distanceTo(path.nextPosition());
-        Drone bestDrone = allDrones.getFirst();
+        double bestDistance = allDrones.all().getFirst().getPosition().distanceTo(path.nextPosition());
+        Drone bestDrone = allDrones.all().getFirst();
 
-        for (Drone drone : allDrones) {
+        for (Drone drone : allDrones.all()) {
             double droneDistance = drone.getPosition().distanceTo(path.nextPosition());
             if (droneDistance < bestDistance) {
                 bestDistance = droneDistance;
@@ -41,13 +41,13 @@ public class Fleet {
             }
         }
 
-        allMissions.add(new Mission(missionName, path, bestDrone));
+        allMissions.all().add(new Mission(missionName, path, bestDrone));
 
         return new OK();
     }
 
     public ActionResult move(String missionName) {
-        Mission chooseMission = (Mission) allMissions.stream().filter(mission -> mission.getName().equals(missionName));
+        Mission chooseMission = (Mission) allMissions.all().stream().filter(mission -> mission.getName().equals(missionName));
 
         if (chooseMission == null) return new KO();
 
@@ -66,14 +66,14 @@ public class Fleet {
     }
 
     public void reportMission(){
-        for (int i = 0; i < allMissions.size(); i++) {
-            System.out.println(allMissions.get(i).toString());
+        for (int i = 0; i < allMissions.all().size(); i++) {
+            System.out.println(allMissions.all().get(i).toString());
         }
     };
 
     public void reportDrones(){
-        for (int i = 0; i < allDrones.size(); i++) {
-            System.out.println(allDrones.get(i).toString());
+        for (int i = 0; i < allDrones.all().size(); i++) {
+            System.out.println(allDrones.all().get(i).toString());
         }
     };
 }
