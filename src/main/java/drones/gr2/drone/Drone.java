@@ -12,12 +12,23 @@ public class Drone {
     private Double vitesse;
     private Position position;
 
+    public Boolean getMoving() {
+        return isMoving;
+    }
+
+    public void setMoving(Boolean moving) {
+        isMoving = moving;
+    }
+
+    private Boolean isMoving;
+
     public Drone(String nom, int altitudeMax, Double vitesse, Position position) {
         this.nom = nom;
         this.altitudeMax = altitudeMax;
         this.vitesse = vitesse;
         this.position = position;
         if(position.distanceTo(position)>altitudeMax)throw new DroneException("Le drone pas être créé avec une position qu'il ne peut atteindre");
+        this.isMoving = false;
     }
 
     public String getNom() {
