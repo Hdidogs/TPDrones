@@ -1,8 +1,10 @@
 package drones.gr2.mission;
 
+import drones.gr2.drone.Drone;
+import drones.gr2.exception.PathException;
 import drones.gr2.util.drone.Path;
+import drones.gr2.util.drone.Position;
 
-import drones.exception.PathException;
 
 public class Mission {
 
@@ -17,9 +19,10 @@ public class Mission {
 
     private Drone drone;
 
-    public void  next(){
-        if(this.path.getPotitions().size() <= 1)throw new PathException("Plus de position dans le parcours");
+    public Boolean next(){
+        if(this.path.getPotitions().size() <= 1)return MissionResult.KO.isValue();
         drone.setPosition(path.nextPosition());
+        return  MissionResult.OK.isValue();
     }
 
 
