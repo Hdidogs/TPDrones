@@ -24,6 +24,18 @@ public class Mission {
         statut = new MissionNotStart();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Drone getDrone() {
+        return drone;
+    }
+
+    public void setStatut(MissionStatut statut) {
+        this.statut = statut;
+    }
+
     public ActionResult next() {
         try {
             drone.goTo(path.nextPosition());
